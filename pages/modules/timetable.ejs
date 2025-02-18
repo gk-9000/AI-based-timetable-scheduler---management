@@ -1,0 +1,92 @@
+<%- include('../layout/header') %>
+
+<div class="container mt-5">
+  <h2>Generated Timetable</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Slot</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% timetable.forEach((row, index) => { %>
+        <tr>
+          <td>Slot <%= index + 1 %></td>
+
+          <!-- Monday Column -->
+          <td>
+            <% if (typeof row.Monday === 'object') { %>
+              <% Object.keys(row.Monday).forEach(batch => { %>
+                <div>
+                  <strong><%= batch %></strong>: <%= row.Monday[batch] %>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <%= row.Monday %>
+            <% } %>
+          </td>
+
+          <!-- Tuesday Column -->
+          <td>
+            <% if (typeof row.Tuesday === 'object') { %>
+              <% Object.keys(row.Tuesday).forEach(batch => { %>
+                <div>
+                  <strong><%= batch %></strong>: <%= row.Tuesday[batch] %>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <%= row.Tuesday %>
+            <% } %>
+          </td>
+
+          <!-- Wednesday Column -->
+          <td>
+            <% if (typeof row.Wednesday === 'object') { %>
+              <% Object.keys(row.Wednesday).forEach(batch => { %>
+                <div>
+                  <strong><%= batch %></strong>: <%= row.Wednesday[batch] %>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <%= row.Wednesday %>
+            <% } %>
+          </td>
+
+          <!-- Thursday Column -->
+          <td>
+            <% if (typeof row.Thursday === 'object') { %>
+              <% Object.keys(row.Thursday).forEach(batch => { %>
+                <div>
+                  <strong><%= batch %></strong>: <%= row.Thursday[batch] %>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <%= row.Thursday %>
+            <% } %>
+          </td>
+
+          <!-- Friday Column -->
+          <td>
+            <% if (typeof row.Friday === 'object') { %>
+              <% Object.keys(row.Friday).forEach(batch => { %>
+                <div>
+                  <strong><%= batch %></strong>: <%= row.Friday[batch] %>
+                </div>
+              <% }) %>
+            <% } else { %>
+              <%= row.Friday %>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../layout/footer') %>
